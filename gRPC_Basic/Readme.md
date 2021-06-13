@@ -12,3 +12,4 @@ This solution is a simple gRPC demo using .net core 3.1 which Includes a Server 
 	<ItemGroup>
 		<Protobuf Include="../*.proto" OutputDir="%(RelativePath)gRPC_Code/" />
 	</ItemGroup>
+	Do the same for Server project as well.
