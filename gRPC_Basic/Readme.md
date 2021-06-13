@@ -16,8 +16,8 @@ This solution is a simple gRPC demo using .net core 3.1 which Includes a Server 
 6. Define Calculator.proto file in proto folder. Define the calculator service. On Build/Re-Build Client and Server project gRPC auto generated code
    will be created. Two files(Calculator.cs and CalculatorGrpc.cs).
 
-7. Set the server project. 
+7. Set the server project.\
    a. Create CalculatorAPI.cs file where the actual code logic is implemented. CalculatorAPI class should inherit
-   CalculatorServiceBase(the class which was auto-generated). Override the methods with your logic.
+   CalculatorServiceBase(the class which was auto-generated). Override the methods with your logic.\
    b. Set up the gRPC.Core.Server in Program.cs file. Initialize the gRPC.Core.Server with ports and services/api to be exposed.
 
