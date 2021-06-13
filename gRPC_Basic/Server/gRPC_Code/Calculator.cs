@@ -26,10 +26,10 @@ namespace CalculatorPkg {
           string.Concat(
             "ChBDYWxjdWxhdG9yLnByb3RvEg1DYWxjdWxhdG9yUGtnIiMKC0NhbGNSZXF1",
             "ZXN0EgkKAWEYASABKAUSCQoBYhgCIAEoBSIeCgxDYWxjUmVzcG9uc2USDgoG",
-            "cmVzdWx0GAEgASgFMpUBCgpDYWxjdWxhdG9yEkAKA0FkZBIaLkNhbGN1bGF0",
-            "b3JQa2cuQ2FsY1JlcXVlc3QaGy5DYWxjdWxhdG9yUGtnLkNhbGNSZXNwb25z",
-            "ZSIAEkUKCFN1YnRyYWN0EhouQ2FsY3VsYXRvclBrZy5DYWxjUmVxdWVzdBob",
-            "LkNhbGN1bGF0b3JQa2cuQ2FsY1Jlc3BvbnNlIgBiBnByb3RvMw=="));
+            "cmVzdWx0GAEgASgFMpwBChFDYWxjdWxhdG9yU2VydmljZRJACgNBZGQSGi5D",
+            "YWxjdWxhdG9yUGtnLkNhbGNSZXF1ZXN0GhsuQ2FsY3VsYXRvclBrZy5DYWxj",
+            "UmVzcG9uc2UiABJFCghTdWJ0cmFjdBIaLkNhbGN1bGF0b3JQa2cuQ2FsY1Jl",
+            "cXVlc3QaGy5DYWxjdWxhdG9yUGtnLkNhbGNSZXNwb25zZSIAYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

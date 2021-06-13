@@ -8,9 +8,9 @@
 using grpc = global::Grpc.Core;
 
 namespace CalculatorPkg {
-  public static partial class Calculator
+  public static partial class CalculatorService
   {
-    static readonly string __ServiceName = "CalculatorPkg.Calculator";
+    static readonly string __ServiceName = "CalculatorPkg.CalculatorService";
 
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
     {
@@ -65,9 +65,9 @@ namespace CalculatorPkg {
       get { return global::CalculatorPkg.CalculatorReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Base class for server-side implementations of Calculator</summary>
-    [grpc::BindServiceMethod(typeof(Calculator), "BindService")]
-    public abstract partial class CalculatorBase
+    /// <summary>Base class for server-side implementations of CalculatorService</summary>
+    [grpc::BindServiceMethod(typeof(CalculatorService), "BindService")]
+    public abstract partial class CalculatorServiceBase
     {
       public virtual global::System.Threading.Tasks.Task<global::CalculatorPkg.CalcResponse> Add(global::CalculatorPkg.CalcRequest request, grpc::ServerCallContext context)
       {
@@ -81,26 +81,26 @@ namespace CalculatorPkg {
 
     }
 
-    /// <summary>Client for Calculator</summary>
-    public partial class CalculatorClient : grpc::ClientBase<CalculatorClient>
+    /// <summary>Client for CalculatorService</summary>
+    public partial class CalculatorServiceClient : grpc::ClientBase<CalculatorServiceClient>
     {
-      /// <summary>Creates a new client for Calculator</summary>
+      /// <summary>Creates a new client for CalculatorService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public CalculatorClient(grpc::ChannelBase channel) : base(channel)
+      public CalculatorServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
-      /// <summary>Creates a new client for Calculator that uses a custom <c>CallInvoker</c>.</summary>
+      /// <summary>Creates a new client for CalculatorService that uses a custom <c>CallInvoker</c>.</summary>
       /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
-      public CalculatorClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      public CalculatorServiceClient(grpc::CallInvoker callInvoker) : base(callInvoker)
       {
       }
       /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
-      protected CalculatorClient() : base()
+      protected CalculatorServiceClient() : base()
       {
       }
       /// <summary>Protected constructor to allow creation of configured clients.</summary>
       /// <param name="configuration">The client configuration.</param>
-      protected CalculatorClient(ClientBaseConfiguration configuration) : base(configuration)
+      protected CalculatorServiceClient(ClientBaseConfiguration configuration) : base(configuration)
       {
       }
 
@@ -137,15 +137,15 @@ namespace CalculatorPkg {
         return CallInvoker.AsyncUnaryCall(__Method_Subtract, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
-      protected override CalculatorClient NewInstance(ClientBaseConfiguration configuration)
+      protected override CalculatorServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
-        return new CalculatorClient(configuration);
+        return new CalculatorServiceClient(configuration);
       }
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-    public static grpc::ServerServiceDefinition BindService(CalculatorBase serviceImpl)
+    public static grpc::ServerServiceDefinition BindService(CalculatorServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Add, serviceImpl.Add)
@@ -156,7 +156,7 @@ namespace CalculatorPkg {
     /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
     /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-    public static void BindService(grpc::ServiceBinderBase serviceBinder, CalculatorBase serviceImpl)
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, CalculatorServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Add, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse>(serviceImpl.Add));
       serviceBinder.AddMethod(__Method_Subtract, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse>(serviceImpl.Subtract));

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package CalculatorPkg;
 
-service Calculator
+service CalculatorService
 {
 	rpc Add(CalcRequest) returns (CalcResponse){}
 	rpc Subtract(CalcRequest) returns (CalcResponse){}
