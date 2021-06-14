@@ -23,10 +23,11 @@ namespace Server.APIs
             return Task.FromResult(new CalcResponse() { Result = request.A - request.B });
         }
 
-        public override Task<CalcResponse> Multiply(CalcRequest request, ServerCallContext context)
+        public override async Task<CalcResponse> Multiply(CalcRequest request, ServerCallContext context)
         {
             Console.WriteLine($"Request for Multiplying {request.A} and {request.B} received ");
-            return Task.FromResult(new CalcResponse() { Result = request.A * request.B });
+            await Task.Delay(2000);
+            return await Task.FromResult(new CalcResponse() { Result = request.A * request.B });
         }
 
         public override Task<CalcDivResponse> Divide(CalcDivRequest request, ServerCallContext context)

@@ -13,7 +13,7 @@ namespace Client
             var client = new CalculatorPkg.CalculatorService.CalculatorServiceClient(channel);
             //Add(client);
             //Subtract(client);
-            //Multiply(client);
+            Multiply(client);
             //Divide(client);
 
             Console.ReadLine();
@@ -28,16 +28,23 @@ namespace Client
 
         private static void Subtract(CalculatorPkg.CalculatorService.CalculatorServiceClient client)
         {
-            var result = client.Subtract(new CalculatorPkg.CalcRequest() { A = 2, B = 3 };
+            var result = client.Subtract(new CalculatorPkg.CalcRequest() { A = 2, B = 3 });
 
             Console.WriteLine($"Difference  of 2 and 3 is {result.Result}");
         }
 
         private static void Multiply(CalculatorPkg.CalculatorService.CalculatorServiceClient client)
         {
-            var result = client.Multiply(new CalculatorPkg.CalcRequest() { A = 2, B = 3 });
+            try
+            {
+                var result = client.Multiply(new CalculatorPkg.CalcRequest() { A = 2, B = 3 }, deadline: DateTime.UtcNow.AddSeconds(1));
 
-            Console.WriteLine($"Multiplication of 2 and 3 is {result.Result}");
+                Console.WriteLine($"Multiplication of 2 and 3 is {result.Result}");
+            }
+            catch (Grpc.Core.RpcException ex)
+            {
+                Console.WriteLine($"Error in Muliply call with message {ex.StatusCode} ");
+            }
         }
 
         private static void Divide(CalculatorPkg.CalculatorService.CalculatorServiceClient client)
