@@ -22,5 +22,21 @@ namespace Server.APIs
             Console.WriteLine($"Request for Subtracting {request.A} and {request.B} received ");
             return Task.FromResult(new CalcResponse() { Result = request.A - request.B });
         }
+
+        public override Task<CalcResponse> Multiply(CalcRequest request, ServerCallContext context)
+        {
+            Console.WriteLine($"Request for Multiplying {request.A} and {request.B} received ");
+            return Task.FromResult(new CalcResponse() { Result = request.A * request.B });
+        }
+
+        public override Task<CalcDivResponse> Divide(CalcDivRequest request, ServerCallContext context)
+        {
+            Console.WriteLine($"Request for Multiplying {request.A} and {request.B} received ");
+            if (request.B == 0)
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Divisor cannot be Zero"));
+            }
+            return Task.FromResult(new CalcDivResponse() { Result = request.A / (double)request.B });
+        }
     }
 }

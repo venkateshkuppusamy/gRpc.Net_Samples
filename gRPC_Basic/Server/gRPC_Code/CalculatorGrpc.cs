@@ -44,6 +44,8 @@ namespace CalculatorPkg {
 
     static readonly grpc::Marshaller<global::CalculatorPkg.CalcRequest> __Marshaller_CalculatorPkg_CalcRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CalculatorPkg.CalcRequest.Parser));
     static readonly grpc::Marshaller<global::CalculatorPkg.CalcResponse> __Marshaller_CalculatorPkg_CalcResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CalculatorPkg.CalcResponse.Parser));
+    static readonly grpc::Marshaller<global::CalculatorPkg.CalcDivRequest> __Marshaller_CalculatorPkg_CalcDivRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CalculatorPkg.CalcDivRequest.Parser));
+    static readonly grpc::Marshaller<global::CalculatorPkg.CalcDivResponse> __Marshaller_CalculatorPkg_CalcDivResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CalculatorPkg.CalcDivResponse.Parser));
 
     static readonly grpc::Method<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse> __Method_Add = new grpc::Method<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse>(
         grpc::MethodType.Unary,
@@ -58,6 +60,20 @@ namespace CalculatorPkg {
         "Subtract",
         __Marshaller_CalculatorPkg_CalcRequest,
         __Marshaller_CalculatorPkg_CalcResponse);
+
+    static readonly grpc::Method<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse> __Method_Multiply = new grpc::Method<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Multiply",
+        __Marshaller_CalculatorPkg_CalcRequest,
+        __Marshaller_CalculatorPkg_CalcResponse);
+
+    static readonly grpc::Method<global::CalculatorPkg.CalcDivRequest, global::CalculatorPkg.CalcDivResponse> __Method_Divide = new grpc::Method<global::CalculatorPkg.CalcDivRequest, global::CalculatorPkg.CalcDivResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Divide",
+        __Marshaller_CalculatorPkg_CalcDivRequest,
+        __Marshaller_CalculatorPkg_CalcDivResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -75,6 +91,16 @@ namespace CalculatorPkg {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::CalculatorPkg.CalcResponse> Subtract(global::CalculatorPkg.CalcRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::CalculatorPkg.CalcResponse> Multiply(global::CalculatorPkg.CalcRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::CalculatorPkg.CalcDivResponse> Divide(global::CalculatorPkg.CalcDivRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -136,6 +162,38 @@ namespace CalculatorPkg {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Subtract, null, options, request);
       }
+      public virtual global::CalculatorPkg.CalcResponse Multiply(global::CalculatorPkg.CalcRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Multiply(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::CalculatorPkg.CalcResponse Multiply(global::CalculatorPkg.CalcRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Multiply, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::CalculatorPkg.CalcResponse> MultiplyAsync(global::CalculatorPkg.CalcRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MultiplyAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::CalculatorPkg.CalcResponse> MultiplyAsync(global::CalculatorPkg.CalcRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Multiply, null, options, request);
+      }
+      public virtual global::CalculatorPkg.CalcDivResponse Divide(global::CalculatorPkg.CalcDivRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Divide(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::CalculatorPkg.CalcDivResponse Divide(global::CalculatorPkg.CalcDivRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Divide, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::CalculatorPkg.CalcDivResponse> DivideAsync(global::CalculatorPkg.CalcDivRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DivideAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::CalculatorPkg.CalcDivResponse> DivideAsync(global::CalculatorPkg.CalcDivRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Divide, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CalculatorServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -149,7 +207,9 @@ namespace CalculatorPkg {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Add, serviceImpl.Add)
-          .AddMethod(__Method_Subtract, serviceImpl.Subtract).Build();
+          .AddMethod(__Method_Subtract, serviceImpl.Subtract)
+          .AddMethod(__Method_Multiply, serviceImpl.Multiply)
+          .AddMethod(__Method_Divide, serviceImpl.Divide).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -160,6 +220,8 @@ namespace CalculatorPkg {
     {
       serviceBinder.AddMethod(__Method_Add, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse>(serviceImpl.Add));
       serviceBinder.AddMethod(__Method_Subtract, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse>(serviceImpl.Subtract));
+      serviceBinder.AddMethod(__Method_Multiply, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::CalculatorPkg.CalcRequest, global::CalculatorPkg.CalcResponse>(serviceImpl.Multiply));
+      serviceBinder.AddMethod(__Method_Divide, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::CalculatorPkg.CalcDivRequest, global::CalculatorPkg.CalcDivResponse>(serviceImpl.Divide));
     }
 
   }
