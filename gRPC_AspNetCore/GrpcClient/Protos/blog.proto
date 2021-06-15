@@ -1,0 +1,33 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+package Blog;
+
+service BlogService
+{
+	rpc Create(BlogRequest) returns (BlogResponse){};
+	rpc Read(BlogReadRequest) returns (BlogResponse){};
+	rpc ReadBlogLines(BlogReadRequest) returns (stream BlogLinesResponse){};
+	
+}
+
+message BlogRequest{
+	string Title =1;
+	string Contents =2;
+	string AuthorName =3;
+	string BlogId =4;
+	repeated string ContentLines = 5;
+}
+message BlogResponse{
+	string Title =1;
+	string AuthorName =2;
+	string BlogId =3;
+}
+
+message BlogReadRequest{
+string BlogId =1;
+}
+
+message BlogLinesResponse{
+	string Line =1;
+}

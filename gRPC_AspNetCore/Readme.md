@@ -1,5 +1,9 @@
 This solution is about creating gRPC sercice using gRPC template and Aspnetcore libraries.
+1. Includes Server streaming cancellation by client. 
+2. Client and Server Interceptors.
+3. Unit test and mocking GRPC client.
 
+Steps to be followed.
 1. Create a blank solution.
 2. Create a gRPC Service project. The project structure includes\
 	a. Reference to Grpc.AspNetCore nuget package.\
@@ -33,13 +37,25 @@ This solution is about creating gRPC sercice using gRPC template and Aspnetcore 
             });
         }
 		```
-3. Create a grpc client project(.net core console app).
-    a. Add references - Grpc.Tools, Grpc.Net.Client. Google.Protobuf.
-    b. Add Protos folder - Add the proto files 
-    c. Edit project file. - Add Itemgroup as below
+3. Create a grpc client project(.net core console app). \
+    a. Add references - Grpc.Tools, Grpc.Net.Client. Google.Protobuf. \
+    b. Add Protos folder - Add the proto files \
+    c. Edit project file. - Add Itemgroup as below \
         ```
         <ItemGroup>
             <Protobuf Include="Protos\greet.proto" GrpcServices="GrpcClient" />
         </ItemGroup>
         ```
-     
+ 4. Create a Blog service in GrpcServer project . Create blog, Read blog and Read blog lines. \
+       Read blog lines is grpc stream service implement with client cancellation to cancel the server streaming.
+
+ 5. Add Interceptor to all client calls. 
+    a. Add ClientIntercetor.cs class and link that to the channel.
+    b. ClientInterceptor.cs class had a commonn deadline set for all the grpc calls.
+ 
+ 6. Add Interceptor to all Server calls.
+    a. Add ServerInterceptor.cs class. Implement the necessary method in our case UnaryServerHandler method.
+    b. In the startup file in ConfiguresServices method add the interceptor.
+
+
+
