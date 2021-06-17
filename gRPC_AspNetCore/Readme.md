@@ -4,7 +4,7 @@ This solution is about creating gRPC sercice using gRPC template and Aspnetcore 
 3. Unit test and mocking GRPC client.
 
 Steps to be followed.
-1. Create a blank solution.
+1. Create a blank solution.\
 2. Create a gRPC Service project. The project structure includes\
 	a. Reference to Grpc.AspNetCore nuget package.\
 	b. Protos folder with sample proto file (greet.proto)\
@@ -46,16 +46,18 @@ Steps to be followed.
             <Protobuf Include="Protos\greet.proto" GrpcServices="GrpcClient" />
         </ItemGroup>
         ```
- 4. Create a Blog service in GrpcServer project . Create blog, Read blog and Read blog lines. \
-       Read blog lines is grpc stream service implement with client cancellation to cancel the server streaming.
+4. Create a Blog service in GrpcServer project . Create blog, Read blog and Read blog lines. \
+       Read blog lines is grpc stream service implement with client cancellation to cancel the server streaming. \
 
- 5. Add Interceptor to all client calls. 
-    a. Add ClientIntercetor.cs class and link that to the channel.
-    b. ClientInterceptor.cs class had a commonn deadline set for all the grpc calls.
+5. Add Interceptor to all client calls. \
+    a. Add ClientIntercetor.cs class and link that to the channel.\
+    b. ClientInterceptor.cs class had a commonn deadline set for all the grpc calls.\
  
- 6. Add Interceptor to all Server calls.
-    a. Add ServerInterceptor.cs class. Implement the necessary method in our case UnaryServerHandler method.
-    b. In the startup file in ConfiguresServices method add the interceptor.
+6. Add Interceptor to all Server calls.\
+    a. Add ServerInterceptor.cs class. Implement the necessary method in our case UnaryServerHandler method. \
+    b. In the startup file in ConfiguresServices method add the interceptor. \
 
-
-
+7. Unit Testing of GrpcClient project by mocking grpcserviceclients. \
+    a. Create a unit test project. Add Nuget references- Grpc.Core and Grpc.Core.Testing and Moq. Add GrpcClient project 
+        reference \ 
+    b. In the unit test methods. use Moq to mock grpcserviceclient object.\ 

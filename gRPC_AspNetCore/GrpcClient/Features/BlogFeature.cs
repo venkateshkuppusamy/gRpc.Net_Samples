@@ -12,12 +12,18 @@ namespace GrpcClient.Features
 {
     public class BlogFeature
     {
+        //private readonly BlogServiceClient blogClient;
         private readonly BlogServiceClient blogClient;
         public BlogFeature() {
             var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var callInvoker =  channel.Intercept(new ClientInterceptor());
 
             blogClient = new BlogServiceClient(callInvoker);
+        }
+
+        public BlogFeature(BlogServiceClient blogServiceClient)
+        {
+            blogClient = blogServiceClient;
         }
 
         public Guid Create(BlogRequest blogRequest)
